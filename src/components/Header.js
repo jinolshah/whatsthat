@@ -19,7 +19,7 @@ export default function Header() {
                         <Link href={'/about'}>About</Link>
                         <Link href={'/contact'}>Contact</Link>
                         <Link href={'/login'}>Sign In</Link>
-                        <Link href={'/register'}>Register</Link>
+                        <Link href={'/login'}>Register</Link>
                     </nav>
 
                     {/* small nav */}
@@ -38,7 +38,7 @@ export default function Header() {
                             <Link href={'/about'}>About</Link>
                             <Link href={'/contact'}>Contact</Link>
                             <Link href={'/login'}>Sign In</Link>
-                            <Link href={'/register'}>Register</Link>
+                            <Link href={'/login'}>Register</Link>
                         </ul>
                     </div>
                 )}

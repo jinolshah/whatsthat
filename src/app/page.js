@@ -20,7 +20,7 @@ export default function Home() {
             </p>
             <input type="text" className="text-black_olive placeholder-black_olive-700 focus:outline-none" placeholder="username"/>
           </div>
-          <button type="submit" className="bg-blush text-black_olive py-4 px-6 rounded-full mb-4">
+          <button type="submit" className="bg-blush-600 text-black_olive py-4 px-6 rounded-full mb-4">
             Join
           </button>
         </form>
