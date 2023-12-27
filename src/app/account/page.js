@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route.js"
 import { redirect } from "next/navigation";
+import grabUsername from "@/components/actions/grabUsername";
 
 
 export default async function AccountPage({searchParams}) {
@@ -14,7 +15,7 @@ export default async function AccountPage({searchParams}) {
         <div>
             {/* {searchParams.usernameAskedFor}
             {session?.user?.name} */}
-            <form>
+            <form action={grabUsername}>
                 <div className="flex flex-col bg-white max-w-md mx-auto p-4 text-center py-16 rounded-3xl">
                     <div>
                         <h1 className="font-bold sm:text-4xl text-4xl text-black_olive tracking-tight">
