@@ -17,7 +17,7 @@ export default function HeroForm() {
         ev.preventDefault();
         if (username.length > 0) {
             // window.localStorage.setItem('usernameAskedFor', username);
-            await signIn('google', {callbackUrl: '/account?username=' + username});
+            await signIn('google', {callbackUrl: '/account?usernameAskedFor=' + username});
         }
     }
 

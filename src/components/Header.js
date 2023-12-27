@@ -18,33 +18,33 @@ export default function Header(props) {
                     {/* big nav */}
                     <nav className="hidden sm:block">
                         <ul className="flex flex-row items-center text-black_olive gap-6">
-                                <li>
-                                    <Link href={'/about'}>About</Link>
-                                </li>
-                                <li>
-                                    <Link href={'/contact'}>Contact</Link>
-                                </li>
-                                {
-                                    !!props.session ? (
-                                        <>
-                                            <li className="loginRef bg-blush-800 px-2 rounded-lg">
-                                                <Link href={'/account'}>Welcome, {props.session.user.name}</Link>
-                                            </li>
-                                            <button onClick={() => (signOut())}>
-                                                Logout
-                                            </button>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <li className="loginRef">
-                                                <Link href={'/login'}>Sign In</Link>
-                                            </li>
-                                            <li className="loginRef">
-                                                <Link href={'/login'}>Register</Link>
-                                            </li>
-                                        </>
-                                    )
-                                }
+                            <li>
+                                <Link href={'/about'}>About</Link>
+                            </li>
+                            <li>
+                                <Link href={'/contact'}>Contact</Link>
+                            </li>
+                            {
+                                !!props.session ? (
+                                    <>
+                                        <li className="loginRef bg-blush-800 px-2 rounded-lg">
+                                            <Link href={'/account'}>Welcome, {props.session.user.name}</Link>
+                                        </li>
+                                        <button onClick={() => (signOut())}>
+                                            Logout
+                                        </button>
+                                    </>
+                                ) : (
+                                    <>
+                                        <li className="loginRef">
+                                            <Link href={'/login'}>Sign In</Link>
+                                        </li>
+                                        <li className="loginRef">
+                                            <Link href={'/login'}>Register</Link>
+                                        </li>
+                                    </>
+                                )
+                            }
                         </ul>
                     </nav>
 
