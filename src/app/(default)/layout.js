@@ -1,5 +1,5 @@
 import { Inter } from 'next/font/google'
-import './globals.css'
+import '../globals.css'
 
 import Header from '@/components/Header'
 
@@ -20,7 +20,7 @@ export default async function RootLayout({ children }) {
   
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className} id='default'>
         <main>
           <Header session={session}/>
           <div className="p-6 sm:max-w-6xl mx-auto">

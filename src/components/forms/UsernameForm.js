@@ -1,5 +1,6 @@
 'use client';
 import grabUsername from "@/actions/grabUsername";
+import SubmitForm from "@/components/buttons/SubmitForm";
 import { redirect } from "next/navigation";
 import { useState } from "react";
 
@@ -22,7 +23,7 @@ export default function UsernameForm({usernameAskedFor}) {
             setError('Username taken');
             return;
         } else {
-            redirect('/account/'+formData.get('username'));
+            redirect('/account?createdUser='+formData.get('username'));
         }
     }
 
@@ -49,11 +50,9 @@ export default function UsernameForm({usernameAskedFor}) {
                             </p>
                         )
                     }
-                    <button
-                        className='bg-olivine-700 py-4 px-8 rounded-full text-black_olive
-                                    flex flex-row items-center text-nowrap justify-center gap-2 mt-6'>
+                    <SubmitForm>
                         <span className="font-bold">Get username</span>
-                    </button>
+                    </SubmitForm>
                 </div>
             </div>
         </form>

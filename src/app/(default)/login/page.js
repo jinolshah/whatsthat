@@ -1,6 +1,14 @@
 import LoginGoogle from '@/components/buttons/LoginGoogle';
+import { getServerSession } from 'next-auth';
+import { authOptions } from "@/app/api/auth/[...nextauth]/route.js";
+import { redirect } from 'next/navigation';
 
-export default function LoginPage() {
+export default async function LoginPage() {
+    const session = await getServerSession(authOptions);
+    if (!!session) {
+        redirect('/account');
+    }
+
     return (
         <div className="flex flex-col bg-white max-w-md mx-auto p-4 text-center py-16 rounded-3xl">
             <div>

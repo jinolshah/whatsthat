@@ -1,6 +1,10 @@
 import HeroForm from '@/components/forms/HeroForm';
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route.js"
 
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession(authOptions);
+
   return (
     <main>
       <section className="pt-6 sm:pt-32">
@@ -15,7 +19,8 @@ export default function Home() {
         </div>
 
         {/* form and button */}
-        <HeroForm />
+        <HeroForm session={session}/>
+        {/* Replace with 'Welcome _user_, go to profile' if already logged in and has a username */}
       </section>
     </main>
   );

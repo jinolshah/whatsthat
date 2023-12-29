@@ -1,9 +1,10 @@
 'use client';
-import { useEffect, useState } from "react";
+import { /*useEffect,*/ useState } from "react";
 import { signIn } from "next-auth/react";
-import { redirect } from "next/navigation"; 
+// import { redirect } from "next/navigation";
+import { useRouter } from 'next/navigation'
 
-export default function HeroForm() {
+export default function HeroForm({session}) {
     // useEffect(() => {
     //     if ('localStorage' in window && window.localStorage.getItem('usernameAskedFor')) {
     //         const username = window.localStorage.getItem('usernameAskedFor');
@@ -13,11 +14,18 @@ export default function HeroForm() {
     // })
 
     const [username, setUsername] = useState('');
+
+    const router = useRouter()
+
     async function handleSubmit(ev) {
         ev.preventDefault();
         if (username.length > 0) {
             // window.localStorage.setItem('usernameAskedFor', username);
-            await signIn('google', {callbackUrl: '/account?usernameAskedFor=' + username});
+            if (!!session) {
+                router.push('/account?usernameAskedFor=' + username);
+            } else {
+                await signIn('google', {callbackUrl: '/account?usernameAskedFor=' + username});
+            }
         }
     }
 
@@ -30,6 +38,7 @@ export default function HeroForm() {
                     wotit.app/
                 </p>
                 <input
+                    value={username}
                     onChange={ev => setUsername(ev.target.value)}
                     type="text" className="text-black_olive placeholder-black_olive-700 focus:outline-none" placeholder="username"/>
             </div>
