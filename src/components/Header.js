@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FaBars, FaTimes } from "react-icons/fa";
 import React, { useState } from "react";
 import {signOut} from "next-auth/react";
+import Logout from "./buttons/Logout";
 
 export default function Header(props) {
     const [nav, setNav] = useState(false);
@@ -30,9 +31,7 @@ export default function Header(props) {
                                         <li className="loginRef bg-blush-800 px-2 rounded-lg">
                                             <Link href={'/account'}>Welcome, {props.session.user.name}</Link>
                                         </li>
-                                        <button onClick={() => (signOut())}>
-                                            Logout
-                                        </button>
+                                        <Logout>Logout</Logout>
                                     </>
                                 ) : (
                                     <>
@@ -73,9 +72,7 @@ export default function Header(props) {
                                             <li className="loginRef bg-blush-800 px-2 rounded-lg">
                                                 <Link href={'/account'}>Welcome, {props.session.user.name}</Link>
                                             </li>
-                                            <button onClick={() => (signOut())}>
-                                                Logout
-                                            </button>
+                                            <Logout>Logout</Logout>
                                         </>
                                     ) : (
                                         <>

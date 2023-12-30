@@ -5,3 +5,7 @@
 body#default {
     @apply bg-verdigris-800;
 }
+
+body#app {
+    @apply bg-gray-100;
+}
