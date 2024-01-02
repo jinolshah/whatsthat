@@ -6,7 +6,7 @@ export default function Logout({className='text-center', children}) {
     return (
         <button
             type="button" 
-            onClick={() => signOut()}
+            onClick={() => signOut({callbackUrl:'/login'})}
             className={className}>
             {children}
         </button>
