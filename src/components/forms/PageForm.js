@@ -4,12 +4,14 @@ import RadioTogglers from "../formItems/RadioTogglers";
 import Image from "next/image";
 import SubmitForm from "@/components/buttons/SubmitForm";
 import pageSave from "@/actions/pageSave";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
-export default function PageForm({page, session}) {
+export default function PageForm({page, session, userImage}) {
     const [bgType, setBgType] = useState((!!page.bgType) ? page.bgType : 'color');
     const [color, setColor] = useState(page.bgColor);
     const [bgImage, setBgImage] = useState(page.bgImage);
+    const [avatar, setAvatar] = useState(userImage? userImage : session?.user?.image);
+    const avatarInputRef = useRef(null);
 
     async function saveBaseSettings(formData) {
         const result = await pageSave(formData);
@@ -17,7 +19,7 @@ export default function PageForm({page, session}) {
         console.log(result);
     }
 
-    function handleFileUpload(ev) {
+    function upload(ev, callbackFn) {
         const file = ev.target.files?.[0];
         if (!!file) {
             const data = new FormData;
@@ -28,10 +30,26 @@ export default function PageForm({page, session}) {
                 body: data,
             }).then(response => {
                 response.json().then(link => {
-                    setBgImage(link);
+                    callbackFn(link);
                 });
             });
         }
+    }
+
+    function handleCoverImageChange(ev) {
+        upload(ev, link => {
+            setBgImage(link);
+        });
+    }
+
+    function handleAvatarImageChange(ev) {
+        upload(ev, link => {
+            setAvatar(link);
+        })
+    }
+
+    function avatarClickHandle(ev) {
+        avatarInputRef.current.click()
     }
 
     return (
@@ -72,7 +90,7 @@ export default function PageForm({page, session}) {
                                     <input type='file'
                                             name='image' 
                                             id='imagePicker'
-                                            onChange={handleFileUpload}
+                                            onChange={handleCoverImageChange}
                                             hidden />
                                     <label
                                         htmlFor="imagePicker"
@@ -85,10 +103,19 @@ export default function PageForm({page, session}) {
                     </div>
                 </div>
                 <div className="flex justify-center -mb-12">
-                    <Image src={session?.user?.image}
-                            alt={'avatar'} 
-                            width={128} height={128}
-                            className="relative -top-8 border-white border-4" />
+                    <div className="relative -top-8 border-white border-4 w-[128px] h-[128px]">
+                        <Image src={avatar}
+                                alt='avatar'
+                                onClick={avatarClickHandle}
+                                width={256} height={256}
+                                className="cursor-pointer object-cover w-full h-full" />
+                        <input type='hidden' name='avatar' value={avatar}/>
+                        <input type='file'
+                                ref={avatarInputRef}
+                                id='imagePicker'
+                                onChange={handleAvatarImageChange}
+                                hidden />
+                    </div>
                 </div>
                 <div className="flex justify-center items-center">
                     <div className="p-16">

@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import UsernameForm from "@/components/forms/UsernameForm";
 import PageForm from "@/components/forms/PageForm";
 import { Page } from "@/models/Page";
+import { User } from "@/models/User";
 import mongoose from "mongoose";
 
 
@@ -17,10 +18,11 @@ export default async function AccountPage({searchParams}) {
     mongoose.connect(process.env.MONGODB_URI);
     
     const page = await Page.findOne({owner: session?.user?.email});
+    const user = await User.findOne({email: session?.user?.email});
 
     if (!!page) {
         return(
-            <PageForm page={JSON.parse(JSON.stringify(page))} session={JSON.parse(JSON.stringify(session))}/>
+            <PageForm page={JSON.parse(JSON.stringify(page))} session={JSON.parse(JSON.stringify(session))} userImage={user.customImage}/>
         )
     }
 
