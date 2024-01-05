@@ -16,9 +16,7 @@ export default function AppLayout({ children }) {
         <main className='flex min-h-screen md:max-w-6xl m-auto'>
           <Sidebar />
           <div className='grow p-4'>
-            <div className="bg-white rounded-xl drop-shadow md:max-w-4xl m-auto overflow-hidden">
-              {children}
-            </div>
+            {children}
           </div>
         </main>
       </body>

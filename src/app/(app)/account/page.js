@@ -6,6 +6,7 @@ import PageForm from "@/components/forms/PageForm";
 import { Page } from "@/models/Page";
 import { User } from "@/models/User";
 import mongoose from "mongoose";
+import { PageLinksForms } from "@/components/forms/PageLinksForm";
 
 
 export default async function AccountPage({searchParams}) {
@@ -22,7 +23,10 @@ export default async function AccountPage({searchParams}) {
 
     if (!!page) {
         return(
-            <PageForm page={JSON.parse(JSON.stringify(page))} session={JSON.parse(JSON.stringify(session))} userImage={user.customImage}/>
+            <>
+                <PageForm page={JSON.parse(JSON.stringify(page))} session={JSON.parse(JSON.stringify(session))} userImage={user.customImage}/>
+                <PageLinksForms page={JSON.parse(JSON.stringify(page))} session={JSON.parse(JSON.stringify(session))}/>
+            </>
         )
     }
 
