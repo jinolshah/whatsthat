@@ -6,7 +6,7 @@ import { User } from "@/models/User";
 import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
 
-export default async function pageSave(formData) {
+export async function pageSave(formData) {
     mongoose.connect(process.env.MONGODB_URI);
     const session = await getServerSession(authOptions);
     
@@ -43,4 +43,17 @@ export default async function pageSave(formData) {
     }
 
     return false;
+}
+
+export async function pageSaveLinks(links) {
+    mongoose.connect(process.env.MONGODB_URI);
+    const session = await getServerSession(authOptions);
+    if (session) {
+        await Page.updateOne(
+            {owner: session?.user?.email},
+            {links: links},
+        )
+    } else {
+        return false;
+    }
 }

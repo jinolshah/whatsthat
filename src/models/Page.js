@@ -9,6 +9,7 @@ const PageSchema = new Schema({
     bgType: {type: String, default: 'color'},
     bgColor: {type: String, default: '#30332e'},
     bgImage: {type: String, default: `https://${process.env.BUCKET_NAME}.s3.amazonaws.com/black.png`},
+    links: {type: Object, default: []},
 }, {timestamps: true});
 
 const Page = models?.Pages || model('Pages', PageSchema);

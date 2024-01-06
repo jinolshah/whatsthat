@@ -3,9 +3,10 @@
 import RadioTogglers from "../formItems/RadioTogglers";
 import Image from "next/image";
 import SubmitForm from "@/components/buttons/SubmitForm";
-import pageSave from "@/actions/pageSave";
+import { pageSave } from "@/actions/pageSave";
 import { useState, useRef } from "react";
 import FormContainer from "../layout/FormContainer";
+import { upload } from "@/libs/upload";
 
 export default function PageForm({page, session, userImage}) {
     const [bgType, setBgType] = useState((!!page.bgType) ? page.bgType : 'color');
@@ -17,33 +18,15 @@ export default function PageForm({page, session, userImage}) {
     async function saveBaseSettings(formData) {
         const result = await pageSave(formData);
         page.bgType=formData.get('bgType');
-        console.log(result);
     }
 
-    function upload(ev, callbackFn) {
-        const file = ev.target.files?.[0];
-        if (!!file) {
-            const data = new FormData;
-            data.set('file', file);
-
-            fetch('/api/upload', {
-                method: 'POST',
-                body: data,
-            }).then(response => {
-                response.json().then(link => {
-                    callbackFn(link);
-                });
-            });
-        }
-    }
-
-    function handleCoverImageChange(ev) {
+    async function handleCoverImageChange(ev) {
         upload(ev, link => {
             setBgImage(link);
         });
     }
 
-    function handleAvatarImageChange(ev) {
+    async function handleAvatarImageChange(ev) {
         upload(ev, link => {
             setAvatar(link);
         })
