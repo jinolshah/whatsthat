@@ -2,8 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    @apply h-full w-full;
+}
+
 body#default {
     @apply bg-verdigris-800;
+}
+
+body#myPage {
+    @apply bg-white h-full w-full;
 }
 
 body#app {
@@ -16,4 +24,12 @@ body#app {
 
 .pageFormInputLabel {
     @apply text-black_olive-500 font-semibold uppercase text-sm w-full
+}
+
+input#navCb:checked ~ aside {
+    left: 0;
+}
+
+input#navCb:checked ~ .backdrop {
+    display: block;
 }

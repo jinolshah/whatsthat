@@ -8,4 +8,6 @@ const UserSchema = new Schema({
     customImage: {type: String, default:null},
 });
 
-export const User = models?.User || model('User', UserSchema);
+const User = models?.User || model('User', UserSchema);
+
+export {User};

@@ -66,9 +66,9 @@ export function PageLinksForms({page, session}) {
     return(
         <FormContainer>
             <form action={save}>
-                <div className="p-16 -mt-4">
-                    <div className="flex-col items-center justify-center">
-                        <div className="flex items-center justify-center mb-8">
+                <div className="px-8 pt-2 pb-16 md:p-16 -mt-4">
+                    <div className="flex flex-col items-center justify-center">
+                        <div className="flex items-center justify-center mb-8 w-full md:pt-0 pt-8">
                             <button type="button" 
                                     className="bg-verdigris text-white rounded-full grow py-3
                                                 inline-flex items-baseline justify-center"
@@ -79,25 +79,27 @@ export function PageLinksForms({page, session}) {
                                 </span>
                             </button>
                         </div>
-                        <div className="px-4">
+                        <div className="md:px-4">
                             <ReactSortable list={links} setList={setLinks}
                                             animation={150}
                                             handle={".handle"}>
                                 {links.map(link => (
                                     <div key={link.key} className="flex items-center mb-8">
-                                        <div className="flex mr-4 self-stretch items-center handle 
+                                        <div className="hidden md:flex mr-4 self-stretch items-center handle 
                                                         cursor-grab active:cursor-grabbing">
                                             <TbGripVertical className=""/>
                                         </div>
-                                        <div className="flex items-center">
+                                        <div className="md:flex items-center justify-center align-middle">
                                             <input id={'icon'+link.key} 
                                                     type="file" 
                                                     hidden
                                                     onChange={ev => handleUpload(ev, link.key)}/>
                                             <label htmlFor={'icon'+link.key}
-                                                    className="flex-none w-[128px] h-[128px] border-2
-                                                                border-slate-100 rounded-xl cursor-pointer overflow-hidden">
-                                                <div className="flex items-center justify-center h-full">
+                                                    className="flex-none w-[64px] md:w-[128px] h-[64px] md:h-[128px] 
+                                                                rounded-xl cursor-pointer overflow-hidden">
+                                                <div className="flex items-center justify-center md:h-full border-2
+                                                                border-slate-100 rounded-xl overflow-hidden
+                                                                w-[128px] h-[128px] mb-2 md:mb-0 mx-auto">
                                                     {
                                                         !link.icon ? 
                                                             (
@@ -112,7 +114,7 @@ export function PageLinksForms({page, session}) {
                                                     }
                                                 </div>
                                             </label>
-                                            <div className="ml-4">
+                                            <div className="md:ml-4">
                                                 <input value={link.title}
                                                     onChange={ev => handleLinkChange(ev, link.key, 'title')}
                                                     type="text" placeholder="title" className="pageFormInput mb-2"/>
@@ -123,8 +125,8 @@ export function PageLinksForms({page, session}) {
                                                     onChange={ev => handleLinkChange(ev, link.key, 'url')}
                                                     type="text" placeholder="link" className="pageFormInput"/>
                                             </div>
-                                            <div className="ml-2 px-1 hover:bg-blush text-slate-500 hover:text-white 
-                                                            self-stretch flex items-center rounded-full">
+                                            <div className="md:ml-2 md:px-1 hover:bg-blush text-slate-500 hover:text-white 
+                                                            self-stretch flex items-center rounded-full justify-center md:mt-0 mt-4">
                                                 <button
                                                     className="self-stretch"
                                                     onClick={() => removeLink(link.key)}>

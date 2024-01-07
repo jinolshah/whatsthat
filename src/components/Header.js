@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { FaBars, FaTimes } from "react-icons/fa";
 import React, { useState } from "react";
-import {signOut} from "next-auth/react";
 import Logout from "./buttons/Logout";
 
 export default function Header(props) {

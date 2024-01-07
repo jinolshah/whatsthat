@@ -1,7 +1,5 @@
 import { Inter } from 'next/font/google'
-import '../globals.css'
-
-import Header from '@/components/Header'
+import '../../globals.css'
 
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route.js"
@@ -20,10 +18,9 @@ export default async function RootLayout({ children }) {
   
   return (
     <html lang="en">
-      <body className={inter.className} id='default'>
-        <main>
-          <Header session={session}/>
-          <div className="p-6 sm:max-w-6xl mx-auto">
+      <body className={inter.className} id='myPage'>
+        <main className="h-full">
+          <div className="md:p-6 h-full">
             {children}
           </div>
         </main>
