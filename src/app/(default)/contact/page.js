@@ -1,7 +1,7 @@
 import { HiOutlineMail } from "react-icons/hi";
 export default async function AboutPage() {
     return (
-            <div className="p-8 h-full md:mt-16">
+            <div className="p-8 h-full mt-32">
                 <div className="max-w-2xl mx-auto text-center">
                     <div className="text-black_olive md:text-4xl text-3xl mb-8">
                         Developed by Jinol Shah
