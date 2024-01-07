@@ -45,7 +45,7 @@ export default async function MyPage({params}) {
             </div> */}
             <div className="flex-col">
                 <div className="relative w-[128px] h-[128px] rounded-full overflow-hidden mx-auto">
-                    <Image src={user.customImage}
+                    <Image src={user.customImage ? user.customImage : user.image}
                             alt='avatar'
                             width={256} height={256}
                             className="object-cover w-full h-full" />

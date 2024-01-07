@@ -6,6 +6,8 @@ import Logout from '@/components/buttons/Logout';
 import { usePathname } from 'next/navigation';
 
 export default function Sidebar({page, session}) {
+    const pageUri = !!page ? page.uri : '#';
+
     return (
         <>
             <label htmlFor='navCb' className='backdrop fixed inset-0 bg-black/80 z-10 hidden w-full h-full transition-all' />
@@ -19,13 +21,13 @@ export default function Sidebar({page, session}) {
                         </Link>
                     </div>
                     <div className='bg-white px-6 py-4 rounded-xl drop-shadow'>
-                        <Link href={'/' + page ? page.uri : 'account'}
+                        <Link href={'/' + pageUri}
                                         target='_blank'>
                                     <div className="flex items-center justify-center px-2 font-bold 
                                                     hover:underline underline-offset-4 decoration-verdigris decoration-2">
                                         <span>&gt;&gt;</span>
                                         <span className='text-slate-300'>&nbsp;/&nbsp;</span>
-                                        <span className='text-verdigris'>{page.uri ? page.uri : '     '}</span>
+                                        <span className='text-verdigris'>{pageUri}</span>
                                     </div>
                         </Link>
                     </div>

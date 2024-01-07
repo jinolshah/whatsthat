@@ -25,7 +25,7 @@ export default async function AnalyticsPage() {
         {
             $match: {
                 type: 'view',
-                uri: 'water',
+                uri: page.uri,
             }
         },
         {
