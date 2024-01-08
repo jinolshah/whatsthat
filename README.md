@@ -1,5 +1,7 @@
 Live here - [wotit.vercel.app](https://wotit.vercel.app)
 
+Example preview of public page - [wotit.vercel.app/jinolshah](https://wotit.vercel.app/jinolshah) 
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
